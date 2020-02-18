@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :course_instructors
+  resources :program_sessions
   resources :answers
   resources :choices
   resources :questions

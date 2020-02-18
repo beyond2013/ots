@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_06_161706) do
+ActiveRecord::Schema.define(version: 2020_02_15_070654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,21 +25,21 @@ ActiveRecord::Schema.define(version: 2020_02_06_161706) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
-  create_table "assignments", force: :cascade do |t|
-    t.bigint "course_id"
-    t.bigint "instructor_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_assignments_on_course_id"
-    t.index ["instructor_id"], name: "index_assignments_on_instructor_id"
-  end
-
   create_table "choices", force: :cascade do |t|
     t.text "description", null: false
     t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_choices_on_question_id"
+  end
+
+  create_table "course_instructors", force: :cascade do |t|
+    t.bigint "course_id"
+    t.bigint "instructor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_instructors_on_course_id"
+    t.index ["instructor_id"], name: "index_course_instructors_on_instructor_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -83,6 +83,15 @@ ActiveRecord::Schema.define(version: 2020_02_06_161706) do
     t.index ["session_id"], name: "index_papers_on_session_id"
   end
 
+  create_table "program_sessions", force: :cascade do |t|
+    t.bigint "program_id"
+    t.bigint "session_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["program_id"], name: "index_program_sessions_on_program_id"
+    t.index ["session_id"], name: "index_program_sessions_on_session_id"
+  end
+
   create_table "programs", force: :cascade do |t|
     t.string "name", null: false
     t.string "nature", null: false
@@ -109,13 +118,15 @@ ActiveRecord::Schema.define(version: 2020_02_06_161706) do
 
   add_foreign_key "answers", "choices"
   add_foreign_key "answers", "questions"
-  add_foreign_key "assignments", "courses"
-  add_foreign_key "assignments", "instructors"
   add_foreign_key "choices", "questions"
+  add_foreign_key "course_instructors", "courses"
+  add_foreign_key "course_instructors", "instructors"
   add_foreign_key "papers", "courses"
   add_foreign_key "papers", "exams"
   add_foreign_key "papers", "instructors"
   add_foreign_key "papers", "programs"
   add_foreign_key "papers", "sessions"
+  add_foreign_key "program_sessions", "programs"
+  add_foreign_key "program_sessions", "sessions"
   add_foreign_key "questions", "papers"
 end

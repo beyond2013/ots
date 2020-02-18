@@ -69,6 +69,6 @@ class PapersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def paper_params
-      params.require(:paper).permit(:session_id, :program_id, :exam_id, :course_id, :instructor_id)
+      params.require(:paper).permit(:session_id, :program_id, :exam_id, :course_id, :instructor_id, :allowedtime)
     end
 end

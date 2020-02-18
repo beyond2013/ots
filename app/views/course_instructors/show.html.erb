@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Course:</strong>
+  <%= Course.find(@course_instructor.course_id).title %>
+</p>
+
+<p>
+  <strong>Instructor:</strong>
+  <%= Instructor.find(@course_instructor.instructor_id).name %>
+</p>
+
+<%= link_to 'Edit', edit_course_instructor_path(@course_instructor) %> |
+<%= link_to 'Back', course_instructors_path %>

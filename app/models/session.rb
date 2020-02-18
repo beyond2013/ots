@@ -1,3 +1,3 @@
 class Session < ApplicationRecord
-	belongs_to :program
+  has_many :programs, through: :program_session
 end
