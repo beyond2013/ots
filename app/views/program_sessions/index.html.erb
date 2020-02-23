@@ -14,8 +14,8 @@
   <tbody>
     <% @program_sessions.each do |program_session| %>
       <tr>
-        <td><%= program_session.program %></td>
-        <td><%= program_session.session %></td>
+        <td><%= Program.find(program_session.program_id).name_with_nature %></td>
+        <td><%= Session.find(program_session.session_id).session_start_finish %></td>
         <td><%= link_to 'Show', program_session %></td>
         <td><%= link_to 'Edit', edit_program_session_path(program_session) %></td>
         <td><%= link_to 'Destroy', program_session, method: :delete, data: { confirm: 'Are you sure?' } %></td>

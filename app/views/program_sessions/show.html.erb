@@ -2,12 +2,12 @@
 
 <p>
   <strong>Program:</strong>
-  <%= @program_session.program %>
+  <%= Program.find(@program_session.program_id).name_with_nature %>
 </p>
 
 <p>
   <strong>Session:</strong>
-  <%= @program_session.session %>
+  <%= Session.find(@program_session.session_id).session_start_finish %>
 </p>
 
 <%= link_to 'Edit', edit_program_session_path(@program_session) %> |
