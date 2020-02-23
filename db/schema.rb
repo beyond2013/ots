@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_15_070654) do
+ActiveRecord::Schema.define(version: 2020_02_22_062126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,22 +67,6 @@ ActiveRecord::Schema.define(version: 2020_02_15_070654) do
     t.index ["email"], name: "index_instructors_on_email", unique: true
   end
 
-  create_table "papers", force: :cascade do |t|
-    t.bigint "session_id"
-    t.bigint "program_id"
-    t.bigint "exam_id"
-    t.bigint "course_id"
-    t.bigint "instructor_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.time "allowedtime", null: false
-    t.index ["course_id"], name: "index_papers_on_course_id"
-    t.index ["exam_id"], name: "index_papers_on_exam_id"
-    t.index ["instructor_id"], name: "index_papers_on_instructor_id"
-    t.index ["program_id"], name: "index_papers_on_program_id"
-    t.index ["session_id"], name: "index_papers_on_session_id"
-  end
-
   create_table "program_sessions", force: :cascade do |t|
     t.bigint "program_id"
     t.bigint "session_id"
@@ -109,11 +93,11 @@ ActiveRecord::Schema.define(version: 2020_02_15_070654) do
   end
 
   create_table "sessions", force: :cascade do |t|
-    t.date "from", null: false
-    t.date "to", null: false
+    t.date "start", null: false
+    t.date "finish", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["from", "to"], name: "index_sessions_on_from_and_to", unique: true
+    t.index ["start", "finish"], name: "index_sessions_on_start_and_finish", unique: true
   end
 
   add_foreign_key "answers", "choices"
@@ -121,12 +105,6 @@ ActiveRecord::Schema.define(version: 2020_02_15_070654) do
   add_foreign_key "choices", "questions"
   add_foreign_key "course_instructors", "courses"
   add_foreign_key "course_instructors", "instructors"
-  add_foreign_key "papers", "courses"
-  add_foreign_key "papers", "exams"
-  add_foreign_key "papers", "instructors"
-  add_foreign_key "papers", "programs"
-  add_foreign_key "papers", "sessions"
   add_foreign_key "program_sessions", "programs"
   add_foreign_key "program_sessions", "sessions"
-  add_foreign_key "questions", "papers"
 end

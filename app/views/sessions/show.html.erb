@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>From:</strong>
-  <%= @session.from %>
+  <strong>Starts:</strong>
+  <%= @session.start.strftime("%Y") %>
 </p>
 
 <p>
-  <strong>To:</strong>
-  <%= @session.to %>
+  <strong>Ends:</strong>
+  <%= @session.finish.strftime("%Y") %>
 </p>
 
 <%= link_to 'Edit', edit_session_path(@session) %> |
