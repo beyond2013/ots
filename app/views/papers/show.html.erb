@@ -1,28 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Session:</strong>
-  <%= @paper.session %>
+  <strong>Program sessions:</strong>
+  <%= @ProgramSesssion.find(@paper.program_sessions_id).program_with_session %>
 </p>
 
 <p>
-  <strong>Program:</strong>
-  <%= @paper.program %>
+  <strong>Course instructors:</strong>
+  <%= @ProgramSession.find(@paper.course_instructors_id).course_with_instructor %>
 </p>
 
 <p>
   <strong>Exam:</strong>
-  <%= @paper.exam %>
+  <%= @Exam.find(@paper.exam_id).title %>
 </p>
 
 <p>
-  <strong>Course:</strong>
-  <%= @paper.course %>
-</p>
-
-<p>
-  <strong>Instructor:</strong>
-  <%= @paper.instructor %>
+  <strong>Timeallowed:</strong>
+  <%= @paper.timeallowed %>
 </p>
 
 <%= link_to 'Edit', edit_paper_path(@paper) %> |

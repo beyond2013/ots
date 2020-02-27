@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_22_062126) do
+ActiveRecord::Schema.define(version: 2020_02_24_060119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,18 @@ ActiveRecord::Schema.define(version: 2020_02_22_062126) do
     t.index ["email"], name: "index_instructors_on_email", unique: true
   end
 
+  create_table "papers", force: :cascade do |t|
+    t.bigint "program_sessions_id"
+    t.bigint "course_instructors_id"
+    t.bigint "exam_id"
+    t.time "timeallowed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_instructors_id"], name: "index_papers_on_course_instructors_id"
+    t.index ["exam_id"], name: "index_papers_on_exam_id"
+    t.index ["program_sessions_id"], name: "index_papers_on_program_sessions_id"
+  end
+
   create_table "program_sessions", force: :cascade do |t|
     t.bigint "program_id"
     t.bigint "session_id"
@@ -105,6 +117,9 @@ ActiveRecord::Schema.define(version: 2020_02_22_062126) do
   add_foreign_key "choices", "questions"
   add_foreign_key "course_instructors", "courses"
   add_foreign_key "course_instructors", "instructors"
+  add_foreign_key "papers", "course_instructors", column: "course_instructors_id"
+  add_foreign_key "papers", "exams"
+  add_foreign_key "papers", "program_sessions", column: "program_sessions_id"
   add_foreign_key "program_sessions", "programs"
   add_foreign_key "program_sessions", "sessions"
 end

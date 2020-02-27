@@ -5,11 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>Session</th>
-      <th>Program</th>
+      <th>Program sessions</th>
+      <th>Course instructors</th>
       <th>Exam</th>
-      <th>Course</th>
-      <th>Instructor</th>
+      <th>Timeallowed</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,11 +16,10 @@
   <tbody>
     <% @papers.each do |paper| %>
       <tr>
-        <td><%= paper.session %></td>
-        <td><%= paper.program %></td>
-        <td><%= paper.exam %></td>
-        <td><%= paper.course %></td>
-        <td><%= paper.instructor %></td>
+        <td><%= @ProgramSesssion.find(@paper.program_sessions_id).program_with_session %></td>
+        <td><%= @ProgramSession.find(@paper.course_instructors_id).course_with_instructor %></td>
+        <td><%= @Exam.find(@paper.exam_id).title %></td>
+        <td><%= paper.timeallowed %></td>
         <td><%= link_to 'Show', paper %></td>
         <td><%= link_to 'Edit', edit_paper_path(paper) %></td>
         <td><%= link_to 'Destroy', paper, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,9 +1,8 @@
 FactoryBot.define do
   factory :paper do
-    session { nil }
-    program { nil }
+    program_sessions { nil }
+    course_instructors { nil }
     exam { nil }
-    course { nil }
-    instructor { nil }
+    timeallowed { "2020-02-24 11:01:19" }
   end
 end
