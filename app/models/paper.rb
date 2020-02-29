@@ -1,7 +1,7 @@
 class Paper < ApplicationRecord
 
-  belongs_to :program_session
-  belongs_to :course_instructor
+  belongs_to :program_session, foreign_key: 'program_sessions_id'
+  belongs_to :course_instructor, foreign_key: 'course_instructors_id'
   belongs_to :exam
 
 end

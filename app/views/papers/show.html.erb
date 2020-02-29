@@ -2,17 +2,17 @@
 
 <p>
   <strong>Program sessions:</strong>
-  <%= @ProgramSesssion.find(@paper.program_sessions_id).program_with_session %>
+  <%= @paper.program_sessions_id %>
 </p>
 
 <p>
   <strong>Course instructors:</strong>
-  <%= @ProgramSession.find(@paper.course_instructors_id).course_with_instructor %>
+  <%= @paper.course_instructors_id %>
 </p>
 
 <p>
   <strong>Exam:</strong>
-  <%= @Exam.find(@paper.exam_id).title %>
+  <%= @paper.exam_id %>
 </p>
 
 <p>

@@ -16,9 +16,9 @@
   <tbody>
     <% @papers.each do |paper| %>
       <tr>
-        <td><%= @ProgramSesssion.find(@paper.program_sessions_id).program_with_session %></td>
-        <td><%= @ProgramSession.find(@paper.course_instructors_id).course_with_instructor %></td>
-        <td><%= @Exam.find(@paper.exam_id).title %></td>
+        <td><%= paper.program_sessions_id %></td>
+        <td><%= paper.course_instructors_id %></td>
+        <td><%= paper.exam_id %></td>
         <td><%= paper.timeallowed %></td>
         <td><%= link_to 'Show', paper %></td>
         <td><%= link_to 'Edit', edit_paper_path(paper) %></td>
