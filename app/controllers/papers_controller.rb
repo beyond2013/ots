@@ -15,6 +15,10 @@ class PapersController < ApplicationController
   # GET /papers/new
   def new
     @paper = Paper.new
+    3.times do
+      question = @paper.questions.build
+      3.times { question.choices.build}
+    end
   end
 
   # GET /papers/1/edit

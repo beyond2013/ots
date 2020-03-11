@@ -34,6 +34,14 @@
     <%= form.time_select :timeallowed, default: {hours: '00', minute: '30'} %>
   </div>
 
+  <b> Questions </b>
+  <div class="field">
+    <%= form.fields_for :question do |builder| %>
+      <%= render "question_fields", f: builder %>
+   <% end %>
+  </div>
+
+
   <div class="actions">
     <%= form.submit %>
   </div>

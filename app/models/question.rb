@@ -1,5 +1,6 @@
 class Question < ApplicationRecord
-  # belongs_to :paper
+  belongs_to :paper
 	has_many :choices
 	has_many :answers
+  accepts_nested_attributes_for :choices
 end
