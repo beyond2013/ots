@@ -1,10 +1,10 @@
-<div class="field">
+<fieldset>
       <%= f.label :description %> 
       <%= f.text_area :description, cols: 60, rows:3 %>
       <%= f.label :marks %>
-      <%= f.text_field :marks %>
-</div>
+      <%= f.text_field :marks, value: 1 %>
 
 <%= f.fields_for :choices do |builder| %>	
   <%= render 'choice_fields', f: builder %>
 <% end %>
+</fieldset>

@@ -19,6 +19,19 @@
   <strong>Timeallowed:</strong>
   <%= @paper.timeallowed %>
 </p>
+<% @paper.questions.each do |question| %>
+<b>Question: </b>
+<%= question.description %>
+<b>Marks: </b><%= question.marks %>
+<br></br>
+<b>Choices: </b>
+
+<% question.choices.each do |choice| %>
+<%= choice.description %>
+<% end %>
+<br></br>
+<% end %>
+
 
 <%= link_to 'Edit', edit_paper_path(@paper) %> |
 <%= link_to 'Back', papers_path %>
