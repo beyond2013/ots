@@ -2,17 +2,17 @@
 
 <p>
   <strong>Program sessions:</strong>
-  <%= @paper.program_sessions_id %>
+  <%= @paper.program_session.program_with_session %>
 </p>
 
 <p>
   <strong>Course instructors:</strong>
-  <%= @paper.course_instructors_id %>
+  <%= @paper.course_instructor.course_with_instructor %>
 </p>
 
 <p>
   <strong>Exam:</strong>
-  <%= @paper.exam_id %>
+  <%= @paper.exam.title %>
 </p>
 
 <p>
@@ -25,13 +25,13 @@
 <b>Marks: </b><%= question.marks %>
 <br></br>
 <b>Choices: </b>
-
+<ul>
 <% question.choices.each do |choice| %>
-<%= choice.description %>
+  <li><%= choice.description %></li>
 <% end %>
 <br></br>
+</ul>
 <% end %>
-
 
 <%= link_to 'Edit', edit_paper_path(@paper) %> |
 <%= link_to 'Back', papers_path %>

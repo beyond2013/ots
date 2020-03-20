@@ -16,9 +16,9 @@
   <tbody>
     <% @papers.each do |paper| %>
       <tr>
-        <td><%= paper.program_sessions_id %></td>
-        <td><%= paper.course_instructors_id %></td>
-        <td><%= paper.exam_id %></td>
+        <td><%= paper.program_session.program.name_with_nature %></td>
+        <td><%= paper.course_instructor.course_with_instructor %></td>
+        <td><%= paper.exam.title %></td>
         <td><%= paper.timeallowed %></td>
         <td><%= link_to 'Show', paper %></td>
         <td><%= link_to 'Edit', edit_paper_path(paper) %></td>
