@@ -11,30 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="same_line">
     <%= form.label :program_sessions_id %>
     <%= form.collection_select :program_sessions_id, ProgramSession.all, :id, :program_with_session %>
 
   </div>
 
-  <div class="field">
+  <div class="same_line">
     <%= form.label :course_instructors_id %>
     <%= form.collection_select :course_instructors_id, CourseInstructor.all, :id, :course_with_instructor %>
   </div>
 
-  <div class="field">
+  <div class="same_line">
     <%= form.label :exam_id %>
     <%= form.collection_select :exam_id, Exam.all, :id, :title %>
   </div>
 
-  <div class="field">
-
+  <div class="same_line">
     <%= form.label :timeallowed %>
-
     <%= form.time_select :timeallowed, default: {hours: '00', minute: '30'} %>
   </div>
 
-  <b> Questions </b>
   <div class="field">
     <%= form.fields_for :questions do |builder| %>
       <%= render "question_fields", f: builder %>

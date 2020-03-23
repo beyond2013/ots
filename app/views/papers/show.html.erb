@@ -21,13 +21,13 @@
 </p>
 <% @paper.questions.each do |question| %>
 <b>Question: </b>
-<%= question.description %>
+<%=h question.description %>
 <b>Marks: </b><%= question.marks %>
 <br></br>
 <b>Choices: </b>
 <ul>
 <% question.choices.each do |choice| %>
-  <li><%= choice.description %></li>
+  <li><%=h choice.description %></li>
 <% end %>
 <br></br>
 </ul>
