@@ -1,20 +1,15 @@
-<fieldset>
-  <div class="same_line" >
+<div class="fields" >
+  <p>
     <%= f.label :description, "Question" %> 
     <%= f.text_area :description, cols: 60, rows:3 %>
     <%= f.label :marks %>
     <%= f.text_field :marks, value: 1 %>
-  </div>
+  </p>
   <b>Choice</b>
 
-  <ol>
-    <%= f.fields_for :choices do |builder| %>  
-      <%= render 'choice_fields', f: builder %>
-    <% end %>
-  </ol>
+  <%= f.fields_for :choices do |builder| %>  
+    <%= render 'choice_fields', fc: builder %>
+  <% end %>
 
-  <div class="same_line">
-    <%= f.check_box :_destroy %>
-    <%= f.label :_destroy, "Remove Question" %>
-  </div>
-</fieldset>
+  <%= link_to_remove_fields "Remove Question", f %>
+</div>

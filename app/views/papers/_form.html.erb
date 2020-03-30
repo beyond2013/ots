@@ -31,6 +31,9 @@
     <%= form.label :timeallowed %>
     <%= form.time_select :timeallowed, default: {hours: '00', minute: '30'} %>
   </div>
+  <div>
+   <%# <%= link_to_add_fields "Add Question", form, :questions %1> %> 
+  </div>
 
   <div class="field">
     <%= form.fields_for :questions do |builder| %>

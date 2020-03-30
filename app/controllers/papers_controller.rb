@@ -75,6 +75,6 @@ class PapersController < ApplicationController
     def paper_params
       params.require(:paper).permit(:program_sessions_id, :course_instructors_id, :exam_id, :timeallowed, 
                                     { questions_attributes: [:id, :description, :marks, :_destroy, 
-                                     { choices_attributes: [:id, :description] } ] } )
+                                     { choices_attributes: [:id, :description, :_destroy] } ] } )
     end
 end
